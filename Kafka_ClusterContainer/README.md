@@ -1,6 +1,9 @@
 ### kafka cluster 내부
 
-![sds.png](..%2F..%2Fsds.png)
+
+![Uploading sds.png…]()
+
+
 
 ### 비동기 로직 for DeferredResults or Partial RestCOntroller
 
