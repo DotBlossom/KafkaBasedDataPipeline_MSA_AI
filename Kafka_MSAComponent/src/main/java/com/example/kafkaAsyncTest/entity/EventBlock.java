@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+
+//DTO로 변경 예정
 @Entity
 @Getter
 @Setter

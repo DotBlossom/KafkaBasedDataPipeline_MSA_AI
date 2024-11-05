@@ -7,6 +7,7 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//DTO로 변경 예정
 @Entity
 @Getter
 @Setter
