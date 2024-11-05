@@ -1,7 +1,7 @@
 ### kafka cluster 내부
 
+![sds](https://github.com/user-attachments/assets/6c921363-7f9b-47ca-aa03-ffd66ace2a2b)
 
-![Uploading sds.png…]()
 
 
 
