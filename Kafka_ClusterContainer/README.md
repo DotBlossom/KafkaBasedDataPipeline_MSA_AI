@@ -1,3 +1,7 @@
+### kafka cluster 내부
+
+![sds.png](..%2F..%2Fsds.png)
+
 ### 비동기 로직 for DeferredResults or Partial RestCOntroller
 
          CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
