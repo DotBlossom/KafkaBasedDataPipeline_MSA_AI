@@ -1,15 +1,12 @@
 package com.example.kafkaAsyncTest.controller;
 
-import com.example.kafkaAsyncTest.entity.EventBlock;
 import com.example.kafkaAsyncTest.entity.Result;
 import com.example.kafkaAsyncTest.service.KafkaMessagePublisher;
 import com.example.kafkaAsyncTest.service.KafkaMessageSubscriber;
 import com.example.kafkaAsyncTest.service.defaultService.ResultService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.CompletableFuture;
@@ -47,7 +44,7 @@ public class defaultRestAPIController {
     }
 
     @PostMapping("/async")
-    public ResponseEntity<String> exportPropagation(@RequestBody EventBlock eventReq) {
+    public ResponseEntity<String> exportPropagation(@RequestBody Result res) {
 
         CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
             // 비동기 함수 1 실행
