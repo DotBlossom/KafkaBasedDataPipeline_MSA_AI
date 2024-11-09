@@ -33,6 +33,12 @@
         }
 
 
+### 전체 코드 로직 요약
+
+![12121 drawio](https://github.com/user-attachments/assets/26b1a5f8-e8a5-4376-b247-982755753e2e)
+
+
+
 
 ![제목 없는 다이어그램 drawio (1)](https://github.com/user-attachments/assets/b1351fdc-c500-4b4d-b38d-e7661b7f5beb)
 
