@@ -35,7 +35,8 @@
 
 ### 전체 코드 로직 요약
 
-![12121 drawio](https://github.com/user-attachments/assets/26b1a5f8-e8a5-4376-b247-982755753e2e)
+![Uploading ssss (1).png…]()
+
 
 
 
