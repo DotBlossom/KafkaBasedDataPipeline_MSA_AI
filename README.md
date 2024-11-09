@@ -1,6 +1,38 @@
 ### 정리용 다이어그램
 추후 Backend, Devops, AI 구독자에 각각 필요한 Diagram 제공
 
+### AI에 원하는 임베딩 전구체 주는 데이터 파이프라인
+
+![12121 drawio](https://github.com/user-attachments/assets/11be9ba9-3863-4429-bd40-86927db1720e)
+
+
+### json-selector-key:value
+
+        {
+          "clothes": {
+            "category": ["01outer_01coat", "01outer_02jacket"],
+            "material": ["synthetic fiber Others"],
+            "color": ["khaki", "Black"],
+            "neck_design": ["hood"],
+            "pant나 다른 카테고리속성" : [],
+            "top_length_type": ["long"],
+            "sleeve_length_type": ["long sleeves"],
+            "brand": ["US-ARMY"],
+            "price": [2190000],
+            "size": ["S", "M", "L"],
+            "gender": ["unisex"],
+            "season": ["winter"], 
+            "pattern": ["None"], 
+            "style": ["casual"],
+            "fit": ["loose"], 
+            "shing_instructions": ["dry cleaning"],
+            "specific_context" : ["내피: 탈부착 가능 내피",
+        			"패딩 충전재: 5온스 패딩 솜",
+        			"어깨 디자인: 드롭 숄더"]
+        		}
+        }
+
+
 
 ![제목 없는 다이어그램 drawio (1)](https://github.com/user-attachments/assets/b1351fdc-c500-4b4d-b38d-e7661b7f5beb)
 
