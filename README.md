@@ -35,11 +35,11 @@
 
 ### 전체 코드 로직 요약
 
-![Uploading ssss (1).png…]()
+![ssss (1)](https://github.com/user-attachments/assets/b4dd1728-bd71-4e2a-8948-cfdfda3d9ee5)
 
 
 
-
+### temp
 
 ![제목 없는 다이어그램 drawio (1)](https://github.com/user-attachments/assets/b1351fdc-c500-4b4d-b38d-e7661b7f5beb)
 
