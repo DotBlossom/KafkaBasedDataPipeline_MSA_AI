@@ -33,6 +33,7 @@ public class EventBlock {
 
 
     // 16 hexType or binary snapshot.
+
     private String transactionIndicator;
 
 

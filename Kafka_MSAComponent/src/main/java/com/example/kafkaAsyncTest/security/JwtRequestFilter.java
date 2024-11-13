@@ -36,7 +36,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String uri = request.getRequestURI();
 
         // 필터링에서 제외할 경로들
-        if (uri.equals("/api/auth/login") || uri.equals("/api/auth/register") || uri.startsWith("/uploads/")) {
+        if (uri.equals("/api/auth/login") || uri.equals("/api/auth/register") || uri.startsWith("/api")) {
             log.info("Skipping JWT filter for {}", uri);
             chain.doFilter(request, response);
             return;
