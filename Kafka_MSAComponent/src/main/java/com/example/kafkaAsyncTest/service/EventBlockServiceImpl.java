@@ -25,7 +25,7 @@ public class EventBlockServiceImpl implements EventBlockService {
         evt.setStatusCode(statusCode);
 
         evt.setCreatedAt(LocalDateTime.now());
-        evt.setData(data);
+        evt.setTransferProps(data);
         return evt;
 
         //EventTransfer<Product> productEvent = CreateEventTransfer("T", "createProduct", 201);
