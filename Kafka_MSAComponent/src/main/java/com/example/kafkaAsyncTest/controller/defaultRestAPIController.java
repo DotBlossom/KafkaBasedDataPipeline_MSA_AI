@@ -1,5 +1,6 @@
 package com.example.kafkaAsyncTest.controller;
 
+import com.example.kafkaAsyncTest.common.listenerFunctionSet.ResultFunctionSet;
 import com.example.kafkaAsyncTest.entity.Result;
 import com.example.kafkaAsyncTest.service.KafkaMessagePublisher;
 import com.example.kafkaAsyncTest.service.KafkaMessageSubscriber;
@@ -22,6 +23,7 @@ public class defaultRestAPIController {
 
     private final KafkaMessagePublisher kafkaMessagePublisher;
     private final KafkaMessageSubscriber kafkaMessageSubscriber;
+    private final ResultFunctionSet resultFunctionSet;
 
     private static void sleep(long millis) {
         try {
@@ -38,7 +40,11 @@ public class defaultRestAPIController {
 
         Result res = resultService.createResult(resReq);
 
-        kafkaMessagePublisher.sendObjectToTopic(res);
+        //String temp = resultFunctionSet.resultStage_1("a");
+        //res.setEventType(temp);
+
+
+        //kafkaMessagePublisher.sendObjectToTopic(res);
 
         return ResponseEntity.ok(res);
     }

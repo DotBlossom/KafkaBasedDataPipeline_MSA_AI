@@ -50,7 +50,7 @@ public class deferredRestAPIController {
         CompletableFuture<HttpServletRequest> sf = CompletableFuture.supplyAsync(() -> {
             log.info("in completable future {}", RequestUtils.getRequest().getRequestURI());
 
-            kafkaMessagePublisher.sendObjectToTopic(res);
+            //kafkaMessagePublisher.sendObjectToTopic(res);
 
             return RequestUtils.getRequest();
 

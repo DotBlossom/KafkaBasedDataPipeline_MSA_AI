@@ -17,7 +17,7 @@ public class EventTransfer<T> {
 
     //AOP에서 메서드명 추출. -> eventName에 맞는 분기점 Controller에서 준비.
     public String eventName;
-
+    public String eventEntity;
     // code if error
     public int statusCode;
 
@@ -28,7 +28,7 @@ public class EventTransfer<T> {
     // time
     public LocalDateTime createdAt;
 
-    public T data;
+    public T transferProps;
 
 
 
