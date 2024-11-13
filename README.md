@@ -83,3 +83,7 @@
 ### external cluster transactinal block router
     transacrionalLevelTraxker 값으로 url처럼 앞에서 라우팅
 
+
+![ssdfafaffa drawio](https://github.com/user-attachments/assets/3e0dd6ad-727a-4bf2-9821-5167c0f579d5)
+
+
