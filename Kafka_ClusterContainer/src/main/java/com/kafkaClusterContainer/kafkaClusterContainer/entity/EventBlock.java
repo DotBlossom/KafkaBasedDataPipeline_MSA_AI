@@ -33,9 +33,14 @@ public class EventBlock {
 
 
     // 16 hexType or binary snapshot.
-
+    // transactionIndicator : 여기에 저장후, 어디 event를 MSA에 줄지.. 등등을 담은,
+    // 일단은 result에 돌아오는거니까... 거기에 구현..
+    // MSA -> Data -> MSa
     private String transactionIndicator;
 
+    //
+    private Long resultId;
+    private boolean eventEndFlag = false;
 
     @Override
     public String toString() {
@@ -46,6 +51,7 @@ public class EventBlock {
                 "EventTransaction: {" + "prev :" + prevEventTransaction +
                 "curr :" + currentEventTransaction + " } " +
                 "transactionIndicator: " + transactionIndicator +
+                "eventEndFlag: " + eventEndFlag +
                 "}";
     }
 

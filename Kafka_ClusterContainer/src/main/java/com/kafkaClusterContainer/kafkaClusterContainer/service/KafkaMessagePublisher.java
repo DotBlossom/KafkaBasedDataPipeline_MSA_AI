@@ -1,6 +1,7 @@
 package com.kafkaClusterContainer.kafkaClusterContainer.service;
 
 
+import com.kafkaClusterContainer.kafkaClusterContainer.entity.EventBlock;
 import com.kafkaClusterContainer.kafkaClusterContainer.entity.Result;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,15 +27,15 @@ public class KafkaMessagePublisher {
     private final KafkaTemplate<String, Object> defaultKafkaTemplate;
 
     // 나중에 topicname도 가져오거나 케이스 분기하자.
-    @Value("${kafkaPipeline.topic-name-1}")
+    @Value("${kafkaPipeline.topic-name-3}")
     String topicName = "";
 
-    public void sendObjectToTopic(Result res) {
+    public void sendObjectToTopic(EventBlock evb) {
         try {
-            String key = String.valueOf(res.getResultId() % 3);
+            String key = String.valueOf(evb.getResultId() % 3);
 
             // alloc Key - obj Mapper
-            ProducerRecord<String, Object> record = new ProducerRecord<>(topicName, key, res);
+            ProducerRecord<String, Object> record = new ProducerRecord<>(topicName, key, evb);
 
             CompletableFuture<SendResult<String, Object>> future =
                     exactlyOnceKafkaTemplate.send(record);
@@ -43,16 +44,16 @@ public class KafkaMessagePublisher {
             future.whenComplete((result,ex) -> {
                 if (ex == null) {
                     RecordMetadata recordMetadata = result.getRecordMetadata();
-                    sendLog(res.toString(), recordMetadata);
+                    sendLog(evb.toString(), recordMetadata);
 
                 } else {
                     System.out.println("Unable to send message=[" +
-                            res.toString() + "] due to : " + ex.getMessage());
+                            evb.toString() + "] due to : " + ex.getMessage());
                 }
             });
 
         } catch (Exception ex) {
-            System.out.println("prod error has occured!" + res.getEventType());
+            System.out.println("prod error has occured!" + evb.getTransactionIndicator());
         }
     }
 

@@ -24,6 +24,8 @@ public class KafkaMessageSubscriber {
 
         sendLog(res.toString(), record);
 
+
+
     }
 
 

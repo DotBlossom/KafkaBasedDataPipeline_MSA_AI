@@ -22,14 +22,5 @@ public class defaultRestAPIController {
     private final KafkaMessageSubscriber kafkaMessageSubscriber;
 
 
-    @PostMapping
-    public ResponseEntity<EventBlock> createEventResponse(@RequestBody EventBlock eventReq) {
-
-
-        kafkaMessagePublisher.sendObjectToTopic(res);
-
-        return ResponseEntity.ok(res);
-    }
-
 
 }
