@@ -1,5 +1,6 @@
 package com.example.kafkaAsyncTest.service;
 
+
 import com.example.kafkaAsyncTest.DTO.EventTransfer;
 import com.example.kafkaAsyncTest.entity.Result;
 import lombok.RequiredArgsConstructor;
@@ -31,14 +32,14 @@ public class KafkaMessagePublisher {
     @Value("${kafkaPipeline.topic-name-1}")
     String topicName = "";
 
-    public <T> void sendObjectToTopic(EventTransfer<T> res) {
+    public <T> void sendObjectToTopic(EventTransfer res) {
         try {
 
             // 자료형을 나눌 key 필요, eventEntity
 
-            Result res2 = (Result) res.getTransferProps();
 
-            String key = String.valueOf(res2.getResultId() % 3);
+
+            String key = String.valueOf(res.getEventId() % 3);
 
             // alloc Key - obj Mapper
             ProducerRecord<String, Object> record = new ProducerRecord<>(topicName, key, res);

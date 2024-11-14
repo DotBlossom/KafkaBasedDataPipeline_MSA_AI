@@ -6,11 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Getter
 @Setter
-public class EventTransfer<T> {
+public class EventTransfer {
 
     // if T : transaction , SeqT: seq+T , A : alarm , D : dataTransfer
     public String eventType;
@@ -19,18 +20,19 @@ public class EventTransfer<T> {
     public String eventName;
     public String eventEntity;
     // code if error
-    public int statusCode;
+    public String statusCode;
 
     //QuerySeletcor, call other MSAs
     public Long queryId;
-
+    public List<Long> queryIdContainer;
 
     // time
     public LocalDateTime createdAt;
 
-    public T transferProps;
+    //
+    public Long eventId;
 
-
+    public boolean createdEventBlock = false;
 
 
 }

@@ -1,10 +1,10 @@
 package com.kafkaClusterContainer.kafkaClusterContainer.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -40,6 +40,15 @@ public class EventBlock {
 
     //
     private Long resultId;
+    private String EventType;
+
+    @ElementCollection
+    @CollectionTable(name = "id_container", joinColumns = @JoinColumn(name="event_block_id"))
+    @Column(name = "event_related_id")
+    private List<Long> eventRelatedIds = new ArrayList<>();
+
+
+
     private boolean eventEndFlag = false;
 
     @Override

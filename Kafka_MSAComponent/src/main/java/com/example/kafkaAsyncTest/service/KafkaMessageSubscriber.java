@@ -28,6 +28,17 @@ public class KafkaMessageSubscriber {
 
     }
 
+    @KafkaListener(topics = "${kafkaPipeline.topic-name-3}", containerFactory = "exactlyOnceKafkaListenerContainerFactory",
+            groupId = "${kafkaPipeline.group-id-4}")
+    public void listenResult(ConsumerRecord<String, Object> record) {
+
+        Object value = record.value();
+        Result res = (Result) value;
+
+        sendLog(res.toString(), record);
+
+        // 만약 result가 적당히 오면, (primaryMSA)
+    }
 
 
     private static void sendLog(String message, ConsumerRecord<String, Object> record) {

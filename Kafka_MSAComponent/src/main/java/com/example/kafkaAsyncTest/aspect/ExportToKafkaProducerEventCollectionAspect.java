@@ -37,7 +37,7 @@ public class ExportToKafkaProducerEventCollectionAspect {
                 String eventType = resultInstance.getEventType();
 
 
-                EventTransfer<Result> res = eventBlockService.createEventTransfer(eventType, eventName, resultInstance, 200);
+                EventTransfer res = eventBlockService.createEventTransfer(eventType, eventName,  "200");
                 kafkaMessagePublisher.sendObjectToTopic(res);
 
             }
@@ -46,7 +46,7 @@ public class ExportToKafkaProducerEventCollectionAspect {
 
         } else {
             // ErrorObject or EventBlock?
-            EventTransfer<String> res = eventBlockService.createEventTransfer("error", "error", "error", 404);
+            EventTransfer res = eventBlockService.createEventTransfer("error", "error", "404");
             kafkaMessagePublisher.sendObjectToTopic(res);
         }
 

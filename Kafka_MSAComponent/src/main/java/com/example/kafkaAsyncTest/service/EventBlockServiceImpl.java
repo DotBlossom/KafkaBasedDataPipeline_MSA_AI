@@ -15,17 +15,18 @@ public class EventBlockServiceImpl implements EventBlockService {
 
 
     @Override
-    public <T> EventTransfer<T> createEventTransfer(String eventType, String eventName, T data, int statusCode) {
+    public EventTransfer createEventTransfer(String eventType, String eventName, String statusCode) {
 
 
-        EventTransfer<T> evt = new EventTransfer<T>();
+        EventTransfer evt = new EventTransfer();
 
         evt.setEventType(eventType);
         evt.setEventName(eventName);
         evt.setStatusCode(statusCode);
 
         evt.setCreatedAt(LocalDateTime.now());
-        evt.setTransferProps(data);
+        evt.setEventId(System.currentTimeMillis());
+
         return evt;
 
         //EventTransfer<Product> productEvent = CreateEventTransfer("T", "createProduct", 201);

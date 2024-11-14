@@ -1,18 +1,25 @@
 package com.kafkaClusterContainer.kafkaClusterContainer.service;
 
 
-import com.kafkaClusterContainer.kafkaClusterContainer.entity.Result;
+
+
+import com.kafkaClusterContainer.kafkaClusterContainer.DTO.EventTransfer;
+import com.kafkaClusterContainer.kafkaClusterContainer.entity.EventBlock;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.events.EventTarget;
+
+
+import java.util.Objects;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class KafkaMessageSubscriber {
+
+    private final KafkaMessagePublisher kafkaMessagePublisher;
 
     @KafkaListener(topics = "${kafkaPipeline.topic-name-1}", containerFactory = "exactlyOnceKafkaListenerContainerFactory",
             groupId = "${kafkaPipeline.group-id-4}")
@@ -20,9 +27,21 @@ public class KafkaMessageSubscriber {
         //String topic = record.topic();
 
         Object value = record.value();
-        EventTransfer res = (EventTransfer) value;
+        EventTransfer evt = (EventTransfer) value;
 
-        sendLog(res.toString(), record);
+
+        // prev , curr 로 level 보고 판단해도됨..
+        // 일단 test니까,
+
+        if (evt.isCreatedEventBlock()) {
+
+        } else {
+
+
+        }
+
+
+        sendLog(evt.toString(), record);
 
 
 
@@ -36,5 +55,10 @@ public class KafkaMessageSubscriber {
         log.info("Topic Name = {}", record.topic());
         log.info("Topic Partition Count = {}", record.partition());
 
+    }
+
+    private void sendPropagationTo(String transactionIndicator, EventBlock evb) {
+
+        kafkaMessagePublisher.sendObjectToTopic(evb);
     }
 }
