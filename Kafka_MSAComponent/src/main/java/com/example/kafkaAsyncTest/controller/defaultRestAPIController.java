@@ -73,28 +73,14 @@ public class defaultRestAPIController {
             return true;
         });
 
-        CompletableFuture<Void> allFutures = CompletableFuture.allOf(future1, future2, future3);
-
-        CompletableFuture<String> responseEntityFuture = allFutures.thenApply(v -> {
-            try {
-                String result1 = future1.get();
-                Integer result2 = future2.get();
-                Boolean result3 = future3.get();
-
-                System.out.println("res 1 결과: " + result1);
-                System.out.println("res 2 결과: " + result2);
-                System.out.println("res 3 결과: " + result3);
-
-                return result1; // result1을 ResponseEntity에 담아 반환
-            } catch (InterruptedException | ExecutionException e) {
-
-                return "codeError";
-            }
-        });
-
-
-        String prov = responseEntityFuture.join();
-        return ResponseEntity.ok(prov);
+        return CompletableFuture.allOf(future1, future2, future3)
+            .thenApply(v -> {
+                // thenApply 내에서 arrow형태로 함수 정의해야 쓰레드 점유 xx
+                String result1 = future1.join(); 
+                // (이미 다 끝난 상태에서 join하는 건 블로킹이 아님)
+                // front 입장에선 그냥 responseentitiy그대로 읽고 사용하면됨.
+                return ResponseEntity.ok(result1); 
+            });
     }
 
 }
