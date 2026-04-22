@@ -47,23 +47,21 @@ public class deferredRestAPIController {
 
         Result res = resultService.createResult(resReq);
 
-        CompletableFuture<HttpServletRequest> sf = CompletableFuture.supplyAsync(() -> {
-            log.info("in completable future {}", RequestUtils.getRequest().getRequestURI());
-
-            //kafkaMessagePublisher.sendObjectToTopic(res);
-
-            return RequestUtils.getRequest();
-
-        }, CACHED_THREAD_POOL);
-
-        HttpServletRequest req2 = sf.get();
-        log.info("{}", req2);
-
-
-        deferredResult.setResult(ResponseEntity.ok(res));
-
+        // 2. 비동기 작업 체이닝
+        CompletableFuture.runAsync(() -> {
+            log.info("비동기 작업 시작: {}", Thread.currentThread().getName());
+            // kafka 전송 등 외부 MSA 통신 로직...
+        }, CACHED_THREAD_POOL).thenAccept(v -> {
+            // 3. 작업이 완료되면 그때 결과를 세팅 (이때 서블릿 쓰레드는 이미 반환된 상태)
+            deferredResult.setResult(ResponseEntity.ok(res));
+        }).exceptionally(ex -> {
+            deferredResult.setErrorResult(ResponseEntity.status(500).build());
+            return null;
+        });
+    
+        // 4. 즉시 리턴 (서블릿 쓰레드 해방)
         return deferredResult;
-    }
+        }
 
 
 }
